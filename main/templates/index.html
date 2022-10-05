@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Chocolate gift</title>
+	<link rel="stylesheet" href="{% static 'css/style.min.css'%}">
+</head>
+<body class="body">
+	<h1 class="body__h1">Лучший бюджетный подарок для каждого!</h1>
+	<ul class="body__list">
+		<li class="body__points">Загрузи фотографию</li>
+		<li class="body__points">Заполни все нужные данные</li>
+		<li class="body__points">Сохрани готовый шаблон</li>
+		<li class="body__points">Распечатай и вырежи по контуру</li>
+	</ul>
+	<form method="post" class="body__form form"  enctype="multipart/form-data">
+		{% csrf_token %}
+		<label for="from" class="form__label">От кого:</label>
+		<input type="text" class="form__input" name="from_user"  id="id_from_user"><br>
+		<label for="to" class="form__label">Кому:</label>
+		<input type="text" class="form__input form__input_bottom" name="to_user"  id="id_to_user"><br>
+		<div class="form__send-img">
+			<label for="inputTag" class="form__label" style="cursor: pointer">Выбери изображение
+				<input  id="inputTag" type="file" class="form__input-img"  id="id_image" name="image">
+				<span id="imageName" class="form__span-file"></span>
+			</label>
+			{{ photo }}
+		</div>
+		<input type="submit" name="post_form" value="Отправить" class="form__send-button">
+	</form>
+	<div class="body__alpen-ring body__alpen-ring_left">
+		<div class="body__ring body__ring_right"></div>
+		<img src="{% static 'img/alpen_1.png'%}" class="body__alpen body__alpen_right">
+	</div>
+	<div class="body__alpen-ring body__alpen-ring_right">
+		<div class="body__ring body__ring_left"></div>
+		<img src="{% static 'img/alpen_2.png'%}" class="body__alpen body__alpen_left">
+	</div>
+	<script src="{% static 'js/script.min.js'%}"></script>
+</body>
+</html>
